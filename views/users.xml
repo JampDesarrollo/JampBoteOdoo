@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="users_list_action">
+            <field name="name">Users</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="usuarios_menu" 
+                  name="Usuarios"
+                  parent="main_bote_menu"/>
+        
+        <menuitem id="users_menu" 
+                  name="Users" 
+                  parent="usuarios_menu"
+                  action="users_list_action"/>
+        
+        <!-- Tree -->
+        <record model="ir.ui.view" id="users_tree_view">
+            <field name="name">users.tree</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <field name="login_date" position="after">
+                    <field name="admin"/>
+                </field>
+            </field>
+        </record>
+         
+        <!-- Formulario -->
+        <record model="ir.ui.view" id="users_form_view">
+            <field name="name">users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
+            <field name="arch" type="xml">
+                <group>
+                    <field name="txoko_ids"/>
+                    <field name="admin"/>
+                    <field name="admin_txokos_ids"/>                            
+                </group>
+            </field>
+        </record>
+        
+    </data>
+</odoo>   

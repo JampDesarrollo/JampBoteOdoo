@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<odoo>
+    <data>
+        <!-- window action -->
+        <!-- The following tag is an action definition
+        for a "window action",that is an action opening
+        a view or a set of views -->
+        <record model="ir.actions.act_window" id="gastos_list_action">
+            <field name="name">Gastos</field>
+            <field name="res_model">bote.gasto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- top level menu: no parent -->
+        <menuitem id="main_bote_menu" 
+                  name="Bote"/>
+        <!-- A first level in the left side menu is 
+        needed before using action= attribute -->
+        <menuitem id="txokos_menu" 
+                  name="Txokos"
+                  parent="main_bote_menu"/>
+        <!-- the following menuitem should appear*after*
+        its parent openacademy_menu and *after* its
+        action course_list_action -->
+        <menuitem id="gastos_menu" 
+                  name="Gastos" 
+                  parent="txokos_menu"
+                  action="gastos_list_action"/>
+        <!-- Full id location:
+        action="openacademy.course_list_action"
+         It is not required when it is the same
+        module -->
+        
+        <!-- Tree -->
+        <record model="ir.ui.view" id="view_gastos_list">
+            <field name="name">view.gastos_list</field>
+            <field name="model">bote.gasto</field>
+            <field name="arch" type="xml">
+                <tree string="Lista De Gastos">
+                    <field name="id"/>
+                    <field name="idTxoko"/>
+                    <field name="idTipo"/>
+                    <field name="date"/>
+                    <field name="cantidad"/>
+                    <field name="importe"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Formulario -->
+        <record model="ir.ui.view" id="view_gastos_form">
+            <field name="name">view.gastos_form</field>
+            <field name="model">bote.gasto</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="idTxoko"/>
+                            <field name="idTipo"/>
+                            <field name="date"/>
+                            <field name="cantidad"/>
+                            <field name="importe"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Search -->
+        <record model="ir.ui.view" id="view_gastos_search">
+            <field name="name">view.gastos_search</field>
+            <field name="model">bote.gasto</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="idTxoko"/>
+                    <field name="idTipo"/>
+                </search>
+            </field>
+        </record>
+        
+        <record model="bote.txoko" id="1">
+            <field name="direction">Avenida Felix</field>
+            <field name="name">Los Jubilados</field>
+            <field name="town">Zamudio</field>
+            <field name="monthFee">300.00</field>
+            <field name="bote">5000</field>
+        </record>
+        
+        <record model="bote.txoko" id="2">
+            <field name="direction">Avenida Pepe</field>
+            <field name="name">JAMP Txoko</field>
+            <field name="town">Zamudio</field>
+            <field name="monthFee">200.00</field>
+            <field name="bote">3000</field>
+        </record>
+        
+        <record model="bote.txoko" id="3">
+            <field name="direction">Avenida jaja</field>
+            <field name="name">Prueba</field>
+            <field name="town">Derio</field>
+            <field name="monthFee">200.00</field>
+            <field name="bote">0</field>
+        </record>
+        
+        
+        <record model="bote.tipogasto" id="1">
+            <field name="name">Mensualidad</field>
+            <field name="descripcion">Mensualidad del txoko</field>
+        </record>
+        
+        <record model="bote.tipogasto" id="2">
+            <field name="name">Producto</field>
+            <field name="descripcion">Productos del txoko</field>
+        </record>
+        
+        <record model="bote.tipogasto" id="3">
+            <field name="name">Eventos</field>
+            <field name="descripcion">Evento del txoko</field>
+        </record>
+        
+        <!--record model="bote.gasto" id="1">
+            <field name="date">28/01/2019 10:51:44</field>
+            <field name="cantidad">1</field>
+            <field name="importe">2.00</field>
+            <field name="idTxoko">17</field>
+            <field name="idTipo">15</field>
+        </record-->
+        
+    </data>
+</odoo>   

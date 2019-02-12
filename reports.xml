@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<odoo>
+    <data>
+        <report
+            id="report_gastos"
+            model="bote.gasto"
+            string="Gastos Report"
+            name="bote.report_gastos_view"
+            file="bote.report_gastos"
+            report_type="qweb-pdf" />
+
+        <template id="report_gastos_view">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div clsass="page">
+                        <h1>Gastos del Txoko</h1>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Txoko</th>
+                                    <th>Tipo de Gasto</th>
+                                    <th>Fecha</th>
+                                    <th>Cantidad</th>
+                                    <th>Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="t">
+                                    <tr>
+                                        <td>
+                                            <span t-field="t.id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.idTxoko"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.idTipo"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.cantidad"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.importe"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

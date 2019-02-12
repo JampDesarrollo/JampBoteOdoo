@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_access_bote_bote,bote.bote,model_bote_gasto,admin_manager,1,1,1,1
+user_access_bote_bote,bote.bote,model_bote_gasto,user_manager,1,0,0,0

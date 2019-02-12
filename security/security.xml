@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="admin_manager" model="res.groups">
+            <field name="name">Administradores</field>
+        </record>
+        <record id="user_manager" model="res.groups">
+            <field name="name">Usuarios</field>
+        </record>
+    </data>
+</odoo>
